@@ -40,4 +40,7 @@ Route::group(['middleware'=>['auth:sanctum']], function (){
 });
 //product
 Route::get('/product', [ProductController::class, 'showAll'])->name('showallproduct');
+//product group
 Route::get('/productgroup', [ProductGroupController::class, 'showAll'])->name('showallproductgroup');
+Route::delete('/productgroupdelete/{id}', [ProductGroupController::class, 'delete'])->name('delete');
+Route::post('/editproductgroup/{id}', [ProductGroupController::class, 'update'])->name('update');

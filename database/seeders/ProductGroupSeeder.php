@@ -19,6 +19,7 @@ class ProductGroupSeeder extends Seeder
 //            ['name'=>'Snake'],
 //            ['name'=>'Alcohol'],
                 ['name'=>'accessory'],
+            ['name'=>'dasds'],
         ];
         foreach ($productgroup as $productgroups){
             ProductGroup::create($productgroups);

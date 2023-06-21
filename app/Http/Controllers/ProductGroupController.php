@@ -41,4 +41,30 @@ class ProductGroupController extends Controller
         ];
         return response()->json($data);
     }
+    public function delete($id){
+        $productgroup = ProductGroup::find($id);
+        $productgroup->delete();
+        $data = [
+            'message'=>'success',
+            'error'=>'Deleted',
+            'status'=>400
+        ];
+        return response()->json(
+            $data
+        );
+    }
+    public function update(Request $request,$id){
+        $productgroup = ProductGroup::find($id);
+        $productgroup->name = $request->name;
+        $productgroup->save();
+        $data = [
+            'message'=>'success',
+            'data'=>$productgroup,
+            'status'=>400
+        ];
+        return response()->json(
+            $data
+        );
+    }
+
 }
