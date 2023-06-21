@@ -15,11 +15,10 @@ class ProductGroupSeeder extends Seeder
     {
         //
         $productgroup=[
-//            ['name'=>'Drink'],
-//            ['name'=>'Snake'],
-//            ['name'=>'Alcohol'],
-                ['name'=>'accessory'],
-            ['name'=>'dasds'],
+            ['name'=>'Drink'],
+            ['name'=>'Snake'],
+            ['name'=>'Alcohol'],
+            ['name'=>'accessory'],
         ];
         foreach ($productgroup as $productgroups){
             ProductGroup::create($productgroups);

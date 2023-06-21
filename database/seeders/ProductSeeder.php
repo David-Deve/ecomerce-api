@@ -15,14 +15,14 @@ class ProductSeeder extends Seeder
     {
         //
         $product=[
-            ['name'=>'sting','price'=>'0.5','qty'=>'100','group_id'=>6],
-            ['name'=>'fanta','price'=>'0.5','qty'=>'100','group_id'=>4],
-            ['name'=>'coca','price'=>'0.5','qty'=>'100','group_id'=>6],
-            ['name'=>'prime','price'=>'0.5','qty'=>'100','group_id'=>6],
-            ['name'=>'redbull','price'=>'0.5','qty'=>'100','group_id'=>6],
-            ['name'=>'monster','price'=>'0.5','qty'=>'100','group_id'=>3],
-            ['name'=>'cafe','price'=>'0.5','qty'=>'100','group_id'=>3],
-            ['name'=>'poca','price'=>'0.5','qty'=>'100','group_id'=>4],
+            ['name'=>'sting','price'=>'0.5','qty'=>'100','group_id'=>1],
+            ['name'=>'fanta','price'=>'0.5','qty'=>'100','group_id'=>1],
+            ['name'=>'coca','price'=>'0.5','qty'=>'100','group_id'=>1],
+            ['name'=>'prime','price'=>'0.5','qty'=>'100','group_id'=>1],
+            ['name'=>'redbull','price'=>'0.5','qty'=>'100','group_id'=>1],
+            ['name'=>'monster','price'=>'0.5','qty'=>'100','group_id'=>1],
+            ['name'=>'cafe','price'=>'0.5','qty'=>'100','group_id'=>1],
+            ['name'=>'poca','price'=>'0.5','qty'=>'100','group_id'=>1],
         ];
         foreach ($product as $products){
             Product::create($products);

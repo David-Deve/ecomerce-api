@@ -31,7 +31,6 @@ Route::group(['middleware'=>['auth:sanctum']], function (){
 
     //order
     Route::post('/createorder', [OrderController::class, 'create'])->name('createorder');
-
     //order_product
     Route::post('/createorderproduct/{order_id}', [OrderProductController::class, 'create'])->name('createorderproduct');
 
