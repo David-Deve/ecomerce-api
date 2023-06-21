@@ -25,7 +25,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::group(['middleware'=>['auth:sanctum']], function (){
     //Auth
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
+    Route::post('/changepassword', [AuthController::class, 'changePassword'])->name('changePassword');
     //product group
     Route::post('/createproductgroup', [ProductGroupController::class, 'create'])->name('createproductgroup');
 

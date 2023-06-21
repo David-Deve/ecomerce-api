@@ -73,5 +73,32 @@ class AuthController extends Controller
             401
         );
     }
+    public function changePassword(Request $request)
+    {
+        $user = Auth::user();
+        $validatedData = $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:4|max:10|confirmed',
+        ]);
+        // Verify the current password
+        if (!password_verify($validatedData['current_password'], $user->password)) {
+            $data = [
+                'message' => 'Error',
+                'error' => 'Current password is incorrect',
+            ];
+            return response()->json($data, 400);
+        }
+
+        // Update the password
+        $user->password = bcrypt($validatedData['new_password']);
+        $user->save();
+
+        $data = [
+            'message' => 'Success',
+            'user'=> $user->name,
+            'error' => 'Password changed successfully'
+        ];
+        return response()->json($data, 200);
+    }
 
 }
