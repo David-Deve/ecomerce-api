@@ -59,6 +59,22 @@ class ProductController extends Controller
             $data
         );
     }
+    public function create(Request $request){
+        $product = new Product();
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->qty = $request->qty;
+        $product->group_id = $request->group_id;
+        $product->save();
+        $data = [
+            'message'=>'complete',
+            'product'=>$product,
+            'status'=>4001
+        ];
+        return response()->json(
+            $data
+        );
+    }
 
 
 }
