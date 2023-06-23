@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SupplierOrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -46,3 +47,6 @@ Route::post('/createproduct', [ProductController::class, 'create'])->name('creat
 Route::get('/productgroup', [ProductGroupController::class, 'showAll'])->name('showallproductgroup');
 Route::delete('/productgroupdelete/{id}', [ProductGroupController::class, 'delete'])->name('delete');
 Route::post('/editproductgroup/{id}', [ProductGroupController::class, 'update'])->name('update');
+
+//supplier
+Route::post('/supplierorder', [SupplierOrderController::class, 'create'])->name('create');
