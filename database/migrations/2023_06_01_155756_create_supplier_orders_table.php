@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('total_price');
             $table->timestamps();
+
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }

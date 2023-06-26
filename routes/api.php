@@ -50,3 +50,4 @@ Route::post('/editproductgroup/{id}', [ProductGroupController::class, 'update'])
 
 //supplier
 Route::post('/supplierorder', [SupplierOrderController::class, 'create'])->name('create');
+Route::get('/showsupplierorder', [SupplierOrderController::class, 'showall'])->name('showall');

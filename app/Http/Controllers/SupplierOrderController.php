@@ -33,4 +33,46 @@ class SupplierOrderController extends Controller
             'not complete'
         );
     }
+    public function showall(){
+        $supplier = SupplierOrder::with('product')->get();
+        $data = [
+            'message'=>'success',
+            'data'=>$supplier->map(function ($report){
+                return [
+                    'id'=>$report->id,
+                    'productid'=>$report->product_id,
+                    'productname'=>$report->product->name,
+                    'qty'=>$report->price,
+                    'totalmount'=>$report->total_price,
+                    'created_at' => $report->created_at,
+                ];
+            }),
+            'status'=>400
+        ];
+        return response()->json($data);
+    }
+//    public function showAll()
+//    {
+//        $products = Product::with('productGroup')->get();
+//
+//        $data = [
+//            'message' => 'Complete',
+//            'data' => $products->map(function ($product) {
+//                return [
+//                    'id' => $product->id,
+//                    'name' => $product->name,
+//                    'price' => $product->price,
+//                    'qty' => $product->qty,
+//                    'group_id' => $product->group_id,
+//                    'product_group_name' => $product->productGroup->name,
+//                    'created_at' => $product->created_at,
+//                    'updated_at' => $product->updated_at
+//                ];
+//            }),
+//            'status' => 200
+//        ];
+//
+//        return response()->json($data);
+//    }
+
 }
