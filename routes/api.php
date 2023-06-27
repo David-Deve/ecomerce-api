@@ -29,15 +29,12 @@ Route::group(['middleware'=>['auth:sanctum']], function (){
     Route::post('/changepassword', [AuthController::class, 'changePassword'])->name('changePassword');
     //product group
     Route::post('/createproductgroup', [ProductGroupController::class, 'create'])->name('createproductgroup');
-
-    //order
-    Route::post('/createorder', [OrderController::class, 'create'])->name('createorder');
-    //order_product
-    Route::post('/createorderproduct/{order_id}', [OrderProductController::class, 'create'])->name('createorderproduct');
-
-
-
 });
+//order
+Route::post('/createorder', [OrderController::class, 'create'])->name('createorder');
+//order_product
+Route::post('/createorderproduct/{id}', [OrderProductController::class, 'create'])->name('createorderproduct');
+
 //product
 Route::get('/product', [ProductController::class, 'showAll'])->name('showallproduct');
 Route::delete('/productdelete/{id}', [ProductController::class, 'delete'])->name('delete');

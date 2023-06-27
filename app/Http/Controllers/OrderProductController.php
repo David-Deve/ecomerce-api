@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,6 +29,10 @@ class OrderProductController extends Controller
                     $orderProduct->qty = $productData['qty'];
                     $orderProduct->price = $productData['price'];
                     $orderProduct->save();
+
+                    $product = Product::findOrFail($productData['product_id']);
+                    $product->qty -= $productData['qty'];
+                    $product->save();
                 }
                 $totalPrice = $order->orderProducts()->sum(DB::raw('qty * price'));
                 $order->total_amount = $totalPrice;

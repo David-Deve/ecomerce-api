@@ -51,28 +51,4 @@ class SupplierOrderController extends Controller
         ];
         return response()->json($data);
     }
-//    public function showAll()
-//    {
-//        $products = Product::with('productGroup')->get();
-//
-//        $data = [
-//            'message' => 'Complete',
-//            'data' => $products->map(function ($product) {
-//                return [
-//                    'id' => $product->id,
-//                    'name' => $product->name,
-//                    'price' => $product->price,
-//                    'qty' => $product->qty,
-//                    'group_id' => $product->group_id,
-//                    'product_group_name' => $product->productGroup->name,
-//                    'created_at' => $product->created_at,
-//                    'updated_at' => $product->updated_at
-//                ];
-//            }),
-//            'status' => 200
-//        ];
-//
-//        return response()->json($data);
-//    }
-
 }
