@@ -82,5 +82,39 @@ class OrderController extends Controller
 
         return response()->json($responseData);
     }
+    public function showOrderid($order_id)
+    {
+        $order = Order::findOrFail($order_id);
+
+        $data = [
+            'id' => $order->id,
+            'customer_name' => $order->customer_name,
+            'total_amount' => $order->total_amount,
+            'created_at' => $order->created_at,
+            'updated_at' => $order->updated_at,
+            'status' => $order->status,
+            'products' => $order->orderProducts()->with('product')->get()->map(function ($orderProduct) {
+                return [
+                    'id' => $orderProduct->id,
+                    'product_name' => $orderProduct->product->name,
+                    'order_id' => $orderProduct->order_id,
+                    'product_id' => $orderProduct->product_id,
+                    'qty' => $orderProduct->qty,
+                    'price' => $orderProduct->price,
+                    'created_at' => $orderProduct->created_at,
+                    'updated_at' => $orderProduct->updated_at
+                ];
+            })
+        ];
+
+        $responseData = [
+            'message' => 'Order with ID ' . $order_id . ' and its associated products',
+            'data' => $data,
+            'status' => 200
+        ];
+
+        return response()->json($responseData);
+    }
+
 
 }
