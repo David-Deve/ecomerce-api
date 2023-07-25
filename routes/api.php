@@ -28,7 +28,7 @@ Route::group(['middleware'=>['auth:sanctum']], function (){
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/changepassword', [AuthController::class, 'changePassword'])->name('changePassword');
     //product group
-    Route::post('/createproductgroup', [ProductGroupController::class, 'create'])->name('createproductgroup');
+
 });
 //order
 Route::post('/createorder', [OrderController::class, 'create'])->name('createorder');
@@ -47,6 +47,7 @@ Route::post('/createproduct', [ProductController::class, 'create'])->name('creat
 Route::get('/productgroup', [ProductGroupController::class, 'showAll'])->name('showallproductgroup');
 Route::delete('/productgroupdelete/{id}', [ProductGroupController::class, 'delete'])->name('delete');
 Route::post('/editproductgroup/{id}', [ProductGroupController::class, 'update'])->name('update');
+Route::post('/createproductgroup', [ProductGroupController::class, 'create'])->name('createproductgroup');
 
 //supplier
 Route::post('/supplierorder', [SupplierOrderController::class, 'create'])->name('create');
