@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('price');
             $table->string('qty');
+            $table->string('linkimg')->nullable();
             $table->unsignedBigInteger('group_id');
-
             $table->foreign('group_id')->references('id')->on('product_groups')->onDelete('cascade');
             $table->timestamps();
         });

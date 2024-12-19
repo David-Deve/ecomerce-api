@@ -21,6 +21,7 @@ class ProductController extends Controller
                     'name' => $product->name,
                     'price' => $product->price,
                     'qty' => $product->qty,
+                    'linkimg'=> $product->linkimg,
                     'group_id' => $product->group_id,
                     'product_group_name' => $product->productGroup->name,
                     'created_at' => $product->created_at,
@@ -64,6 +65,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->qty = $request->qty;
+        $product->linkimg = $request->linkimg;
         $product->group_id = $request->group_id;
         $product->save();
         $data = [

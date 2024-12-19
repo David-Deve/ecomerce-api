@@ -13,6 +13,7 @@ class Product extends Model
         'name',
         'price',
         'qty',
+        'linkimg',
         'group_id'
     ];
 
