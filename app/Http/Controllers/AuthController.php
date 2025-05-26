@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -28,13 +27,13 @@ class AuthController extends Controller
             ];
             return response()->json($data, 400);
         }
+        $user->assignRole('cashier');
         return response()->json(
             [
                 'message' => 'Success',
                 'error' => 'Registration completed',
                 'User'=>$user
             ],
-            400
         );
     }
     public function login(Request $request)
@@ -54,11 +53,8 @@ class AuthController extends Controller
             ];
             return response()->json($data, 200);
         } else {
-            $data = [
-                'message' => 'Error',
-                'error' => 'Invalid credentials'
-            ];
-            return response()->json($data, 401);
+
+            return response()->json(401);
         }
     }
     public function logout()
@@ -99,6 +95,20 @@ class AuthController extends Controller
             'error' => 'Password changed successfully'
         ];
         return response()->json($data, 200);
+    }
+
+    public function showAllUser(){
+        $users = User::with('roles')->get();
+
+        // Return the users and their roles
+        return response()->json($users->map(function ($user) {
+            return [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'roles' => $user->getRoleNames(), // Retrieve roles
+            ];
+        }));
     }
 
 }

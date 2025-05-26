@@ -69,7 +69,7 @@ return [
     | ahead and set this to a sensible default for you out of the box.
     |
     */
-    'timezone' => env('APP_TIMEZONE', 'UTC'),
+    'timezone' => 'Asia/Phnom_Penh',
 
     /*
     |--------------------------------------------------------------------------

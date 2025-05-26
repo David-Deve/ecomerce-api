@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('inv_id')->nullable()->unique();
             $table->string('customer_name');
             $table->string('total_amount');
             $table->timestamps();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
@@ -36,14 +37,28 @@ class OrderProductController extends Controller
                 }
                 $totalPrice = $order->orderProducts()->sum(DB::raw('qty * price'));
                 $order->total_amount = $totalPrice;
+
+                // Generate inv_id based on completed orders only (status Y)
+                
+
+
                 $order->status= 'Y';
                 $order->save();
+                //save order first before Update inv_id and save it again
+                $date = now()->format('Ymd');
+                $countToday = Order::whereDate('created_at', now())
+                    ->where('status', 'Y')
+                    ->count() + 1;
 
+                $invId = 'INV-' . $date . '-' . str_pad($countToday, 5, '0', STR_PAD_LEFT);
+                $order->inv_id = $invId;
+                $order->save();
                 DB::commit();
                 $data=[
                     'message'=>'order successfully',
                     'error'=>'Nothing',
                     'order_product'=>$validateData['products'],
+                    'inv_id' => $invId
                 ];
                 return response()->json(
                     $data,

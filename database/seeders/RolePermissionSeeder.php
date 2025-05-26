@@ -18,7 +18,7 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'edit Product']);
         Permission::create(['name' => 'delete Product']);
 
-        $admin = Role::create(['name' => 'admin']);
+        $admin = Role::findByName('admin');
         $cashier  = Role::create(['name' => 'cashier']);
 
         $admin->givePermissionTo(['create Product', 'edit Product', 'delete Product']);

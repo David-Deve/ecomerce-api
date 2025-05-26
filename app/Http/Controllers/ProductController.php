@@ -27,8 +27,7 @@ class ProductController extends Controller
                     'created_at' => $product->created_at,
                     'updated_at' => $product->updated_at
                 ];
-            }),
-            'status' => 200
+            })
         ];
 
         return response()->json($data);
@@ -70,8 +69,7 @@ class ProductController extends Controller
         $product->save();
         $data = [
             'message'=>'complete',
-            'product'=>$product,
-            'status'=>4001
+            'product'=>$product
         ];
         return response()->json(
             $data
