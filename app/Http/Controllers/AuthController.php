@@ -25,7 +25,7 @@ class AuthController extends Controller
                 'message' => 'Error',
                 'error' => 'Registration not completed'
             ];
-            return response()->json($data, 400);
+            return response()->json($data);
         }
         $user->assignRole('cashier');
         return response()->json(
@@ -51,10 +51,9 @@ class AuthController extends Controller
                 'token' => $token,
                 'user'=> $user
             ];
-            return response()->json($data, 200);
+            return response()->json($data);
         } else {
-
-            return response()->json(401);
+            return response()->json();
         }
     }
     public function logout()
@@ -66,7 +65,7 @@ class AuthController extends Controller
         ];
         return response()->json(
             $data,
-            401
+
         );
     }
     public function changePassword(Request $request)
@@ -82,7 +81,7 @@ class AuthController extends Controller
                 'message' => 'Error',
                 'error' => 'Current password is incorrect',
             ];
-            return response()->json($data, 400);
+            return response()->json($data);
         }
 
         // Update the password
@@ -94,7 +93,7 @@ class AuthController extends Controller
             'user'=> $user->name,
             'error' => 'Password changed successfully'
         ];
-        return response()->json($data, 200);
+        return response()->json($data);
     }
 
     public function showAllUser(){
